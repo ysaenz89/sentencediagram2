@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Diagramming Game - SAT/ACT Prep</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Interactive sentence diagramming game for SAT/ACT preparation. Master grammar through drag-and-drop practice with complex sentences.">
+    <meta name="keywords" content="SAT, ACT, grammar, sentence diagramming, education, practice game">
+    <meta name="author" content="Sentence Diagramming Game">
+
+    <!-- Open Graph meta tags for social sharing -->
+    <meta property="og:title" content="Sentence Diagramming Game - SAT/ACT Prep">
+    <meta property="og:description" content="Master SAT/ACT grammar through interactive sentence diagramming practice">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sentence Diagramming Game - SAT/ACT Prep">
+    <meta name="twitter:description" content="Master SAT/ACT grammar through interactive sentence diagramming practice">
+    <meta name="twitter:image" content="">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Sentence Diagramming Game</h1>
+            <p class="subtitle">Master SAT/ACT Grammar Through Interactive Practice</p>
+            <div class="share-section">
+                <button id="share-btn" class="btn btn-secondary">🔗 Share Game</button>
+                <span id="share-message" class="share-message hidden"></span>
+            </div>
+        </header>
+
+        <div class="game-stats">
+            <div class="stat-item">
+                <span class="stat-label">Level</span>
+                <span id="level" class="stat-value">1</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Score</span>
+                <span id="score" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Streak</span>
+                <span id="streak" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Accuracy</span>
+                <span id="accuracy" class="stat-value">100%</span>
+            </div>
+        </div>
+
+        <main class="game-area">
+            <section class="sentence-section">
+                <div class="sentence-container">
+                    <h2>Diagram this sentence:</h2>
+                    <p id="sentence" class="sentence-text"></p>
+                    <div id="sentence-type" class="sentence-type"></div>
+                </div>
+            </section>
+
+            <section class="diagram-section">
+                <div class="diagram-workspace">
+                    <h3>Build your diagram:</h3>
+
+                    <div class="diagram-legend">
+                        <h4>Parts of Speech Key:</h4>
+                        <div class="legend-grid">
+                            <div class="legend-item"><span class="legend-tag subj">SUBJ</span> Subject</div>
+                            <div class="legend-item"><span class="legend-tag verb">VERB</span> Verb</div>
+                            <div class="legend-item"><span class="legend-tag obj">OBJ</span> Object</div>
+                            <div class="legend-item"><span class="legend-tag adj">ADJ</span> Adjective</div>
+                            <div class="legend-item"><span class="legend-tag adv">ADV</span> Adverb</div>
+                            <div class="legend-item"><span class="legend-tag prep">PREP</span> Preposition</div>
+                            <div class="legend-item"><span class="legend-tag conj">CONJ</span> Conjunction</div>
+                            <div class="legend-item"><span class="legend-tag art">ART</span> Article</div>
+                        </div>
+                    </div>
+
+                    <div id="diagram-canvas" class="diagram-canvas">
+                        <div class="diagram-template">
+                            <div class="main-line">
+                                <div class="diagram-zone" data-zone="subject" data-label="SUBJECT">
+                                    <span class="zone-label">SUBJECT</span>
+                                    <div class="zone-drop-area"></div>
+                                </div>
+                                <div class="diagram-zone" data-zone="verb" data-label="VERB">
+                                    <span class="zone-label">VERB</span>
+                                    <div class="zone-drop-area"></div>
+                                </div>
+                                <div class="diagram-zone" data-zone="object" data-label="OBJECT">
+                                    <span class="zone-label">OBJECT</span>
+                                    <div class="zone-drop-area"></div>
+                                </div>
+                            </div>
+                            <div class="modifier-lines">
+                                <div class="diagram-zone" data-zone="adjective" data-label="ADJECTIVES">
+                                    <span class="zone-label">ADJECTIVES</span>
+                                    <div class="zone-drop-area"></div>
+                                </div>
+                                <div class="diagram-zone" data-zone="adverb" data-label="ADVERBS">
+                                    <span class="zone-label">ADVERBS</span>
+                                    <div class="zone-drop-area"></div>
+                                </div>
+                                <div class="diagram-zone" data-zone="prepositional" data-label="PREPOSITIONAL PHRASES">
+                                    <span class="zone-label">PREPOSITIONAL PHRASES</span>
+                                    <div class="zone-drop-area"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="word-bank">
+                    <h4>Word Bank:</h4>
+                    <div id="word-bank" class="word-bank-items">
+                        <!-- Draggable words populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="controls-section">
+                <div class="control-buttons">
+                    <button id="check-answer" class="btn btn-primary">Check Answer</button>
+                    <button id="hint" class="btn btn-secondary">Get Hint</button>
+                    <button id="skip" class="btn btn-secondary">Skip</button>
+                    <button id="reset" class="btn btn-secondary">Reset Diagram</button>
+                </div>
+            </section>
+
+            <section id="feedback" class="feedback-section hidden">
+                <div class="feedback-content">
+                    <h3 id="feedback-title"></h3>
+                    <p id="feedback-message"></p>
+                    <div id="explanation" class="explanation"></div>
+                    <div id="correct-diagram" class="correct-diagram"></div>
+                </div>
+                <button id="next-sentence" class="btn btn-primary">Next Sentence</button>
+            </section>
+        </main>
+
+        <div id="hint-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Hint</h3>
+                <p id="hint-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        Load order matters:
+        1. sentences-100-complete.js  — declares the global `professionalSentences` object
+        2. script-integrated.js       — reads that global and boots the game
+    -->
+    <script src="sentences-100-complete.js"></script>
+    <script src="script-integrated.js"></script>
+</body>
+</html>
