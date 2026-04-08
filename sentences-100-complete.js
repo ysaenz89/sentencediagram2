@@ -10,7 +10,7 @@ const professionalSentences = {
             text: "The philosopher contemplated existence.",
             type: "simple",
             difficulty: 1,
-            explanation: "Simple sentence with a subject (philosopher) and predicate (contemplated existence).",
+            explanation: "Simple sentence with a subject (philosopher), verb (contemplated), and the object of the verb, the thing being contemplated (existence).",
             partsOfSpeech: {
                 "The": "article",
                 "philosopher": "subject",
@@ -27,7 +27,7 @@ const professionalSentences = {
             text: "Scientists analyze data carefully.",
             type: "simple",
             difficulty: 1,
-            explanation: "Simple sentence with subject (Scientists), verb (analyze), object (data), and adverb (carefully).",
+            explanation: "Simple sentence with subject (Scientists), verb (analyze), object (data), and adverb (carefully). Adverbs describe verbs, adjectives, and other adverbs.",
             partsOfSpeech: {
                 "Scientists": "subject",
                 "analyze": "verb",
@@ -45,7 +45,7 @@ const professionalSentences = {
             text: "Students study diligently.",
             type: "simple",
             difficulty: 1,
-            explanation: "Simple sentence with subject (Students), verb (study), and adverb (diligently).",
+            explanation: "Simple sentence with subject (Students), verb (study), and adverb (diligently). Adverbs describe verbs, adjectives, and other adverbs.",
             partsOfSpeech: {
                 "Students": "subject",
                 "study": "verb",
@@ -65,7 +65,7 @@ const professionalSentences = {
             text: "The historian researched primary sources, and the archaeologist uncovered artifacts.",
             type: "compound",
             difficulty: 2,
-            explanation: "Compound sentence with two independent clauses joined by 'and'. Each clause has its own subject and verb.",
+            explanation: "Compound sentence with two independent clauses joined by the coordinating conjunction 'and'. Each clause has its own subject and verb; thus, both are independent clauses.",
             partsOfSpeech: {
                 "The": "article",
                 "historian": "subject",
